@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:scroll_save/scroll_save.dart';
 import 'overlayedWidget.dart';
 
 class Story extends StatefulWidget {
@@ -64,8 +65,8 @@ class _StoryState extends State<Story> {
         _addedWidgets.add(
           OverlayedWidget(
             key: Key(_selectedImages.length.toString()),
-            child: Image.file(
-              selectedImageFile,
+            child: Image.network(
+              "https://upload.wikimedia.org/wikipedia/commons/6/6e/Örnek.jpg",
               fit: BoxFit.cover,
             ),
             onDragStart: () {
@@ -100,6 +101,16 @@ class _StoryState extends State<Story> {
                   });
                 }
               }
+              
+              //Matrix4 identityMatrix = Matrix4.identity();
+              //MatrixDecomposedValues decomposedValues =
+              //    MatrixGestureDetector.decomposeToValues(identityMatrix);
+              //print("Translation: ${decomposedValues.translation}");
+              //print("Scale: ${decomposedValues.scale}");
+              //print("Rotation: ${decomposedValues.rotation}");
+              //print("Y ${offset.dy}");
+              //print("X ${offset.dx}");
+              
             },
           ),
         );

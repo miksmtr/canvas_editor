@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scroll_save/scroll_save.dart';
 
-typedef PointMoveCallback = void Function(Offset offset,Key? key);
+typedef PointMoveCallback = void Function(Offset offset, Key? key);
 
 class OverlayedWidget extends StatelessWidget {
   final Widget child;
@@ -23,17 +23,18 @@ class OverlayedWidget extends StatelessWidget {
     return Listener(
       onPointerMove: (event) {
         offset = event.position;
-        onDragUpdate(offset,key);
+        onDragUpdate(offset, key);
       },
       child: MatrixGestureDetector(
         onMatrixUpdate: (m, tm, sm, rm) {
+          print(m);
           notifier.value = m;
         },
         onScaleStart: () {
           onDragStart();
         },
         onScaleEnd: () {
-          onDragEnd(offset,key);
+          onDragEnd(offset, key);
         },
         child: AnimatedBuilder(
           animation: notifier,
